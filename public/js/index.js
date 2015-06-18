@@ -11,7 +11,10 @@ $('.chatbox form').submit(function() {
     if (txt.indexOf('/') === 0) {
         var cmd = txt.substring(1);
         chatCommands.process(cmd);
+        return;
     }
+
+    //OTHERWISE JUST A CHAT MESSAGE
     socket.emit('chat message', $('.chatbox input').val());
     $('.chatbox input').val('');
     return false;
