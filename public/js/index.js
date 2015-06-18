@@ -5,20 +5,19 @@ var appendMessage = function(msg) {
 var socket = io();
 var chatCommands = new ChatCommandProcessor(socket, appendMessage);
 
-
 $('.chatbox form').submit(function() {
     var txt = $('.chatbox input').val();
+    $('.chatbox input').val('');
     if (txt.indexOf('/') === 0) {
         var cmd = txt.substring(1);
         chatCommands.process(cmd);
         return false; //do not submit
     }
-
     //OTHERWISE JUST A CHAT MESSAGE
-    socket.emit('chat message', $('.chatbox input').val());
-    $('.chatbox input').val('');
+    socket.emit('chat message', text);
     return false;
 });
+
 socket.on('nick given', function(nick) {
     $('.memberList .me').html(nick);
     appendMessage('You are now known as ' + nick + ', to change your nick type /nick <new-nick>');
