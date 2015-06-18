@@ -8,7 +8,9 @@ ChatCommandProcessor.prototype.process = function(cmd){
  switch(cmdargs[0]){
     case 'nick':
       this.socket.emit('nick change', cmdargs[1]);
+    break;
     case 'help':
       this.statuswriter('Valid commands are nick, help');
+    break;
  }
 }
