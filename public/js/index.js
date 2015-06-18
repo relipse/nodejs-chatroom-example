@@ -7,14 +7,16 @@ var chatCommands = new ChatCommandProcessor(socket, appendMessage);
 
 $('.chatbox form').submit(function() {
     var txt = $('.chatbox input').val();
+    //clear chat box
     $('.chatbox input').val('');
+
     if (txt.indexOf('/') === 0) {
         var cmd = txt.substring(1);
         chatCommands.process(cmd);
         return false; //do not submit
     }
     //OTHERWISE JUST A CHAT MESSAGE
-    socket.emit('chat message', text);
+    socket.emit('chat message', txt);
     return false;
 });
 
