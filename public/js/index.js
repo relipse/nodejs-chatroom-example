@@ -11,7 +11,7 @@ $('.chatbox form').submit(function() {
     if (txt.indexOf('/') === 0) {
         var cmd = txt.substring(1);
         chatCommands.process(cmd);
-        return;
+        return false; //do not submit
     }
 
     //OTHERWISE JUST A CHAT MESSAGE
