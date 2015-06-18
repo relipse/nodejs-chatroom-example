@@ -1,0 +1,17 @@
+{
+  "name": "chatroom",
+  "version": "0.0.0",
+  "description": "jk's chatroom",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": "",
+  "author": "Jim Kinsman",
+  "license": "MiT",
+  "dependencies": {
+    "express": "~4.10.2",
+    "socket.io": "~1.3.5"
+  }
+}

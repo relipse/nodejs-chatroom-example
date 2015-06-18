@@ -1,0 +1,18 @@
+.members {
+  float: left;
+  width: 20%;
+  height: 500px;
+  background-color: silver;
+}
+
+.messages {
+  width: 80%;
+  height: 500px;
+  float: left;
+  background-color: silver;
+}
+
+.chatbox input {
+   width: 100%;
+}
+
