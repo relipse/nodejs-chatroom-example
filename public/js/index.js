@@ -30,8 +30,8 @@ socket.on('nick change rejected', function(nick) {
     appendMessage('Nick is already taken: ' + nick);
 });
 
-socket.on('chat message', function(msg) {
-    appendMessage(msg);
+socket.on('chat message', function(obj) {
+    appendMessage(obj.from + ': ' + obj.msg);
 });
 
 socket.on('server full', function(msg) {
