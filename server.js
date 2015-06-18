@@ -4,6 +4,10 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var sockets = [];
 
+function removeSocket(socket){
+	sockets.splice(sockets.indexOf(socket), 1);
+}
+
 app.use(express.static('public'));
 
 var nick_prefixes = ['sparky', 'fido', 'wannabe', 'guest', 'frizzy', 'littlejohnny'];
@@ -59,7 +63,8 @@ io.on('connection', function(socket) {
         io.emit('chat message', {from: socket.nick, msg: msg});
     });
     socket.on('disconnect', function() {
-        console.log('user disconnected');
+        console.log(socket.nick + ' disconnected');
+        removeSocket(socket);
         socket.broadcast.emit('part', socket.nick);
     });
 });
