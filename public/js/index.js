@@ -42,3 +42,17 @@ socket.on('server full', function(msg) {
     appendMessage('Server full, try again later');
 })
 
+socket.on('join', function(nick){
+    $('.memberList').append('<li class="'+nick+'">'+nick+'</li>');
+});
+
+socket.on('part', function(nick){
+    $('.memberlist .'+nick).remove();
+});
+
+socket.on('nicklist', function(nicklist){
+    for (var i = 0; i < nicklist.length; ++i){
+        var nick = nicklist[i];
+        $('.memberList').append('<li class="'+nick+'">'+nick+'</li>');
+    }
+});

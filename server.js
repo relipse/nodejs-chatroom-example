@@ -37,6 +37,14 @@ io.on('connection', function(socket) {
     }
     socket.nick = nick;
     socket.emit('nick given', nick);
+    //tell everyone that I joined
+    socket.broadcast.emit('join', nick);
+    var othernicks = [];
+    for (var i = 0; i < sockets.length; ++i){
+        othernicks.push(sockets[i].nick);
+    }
+    socket.emit('nicklist', othernicks);
+
     sockets.push(socket);
     socket.on('nick change', function(nick) {
         if (checkNick(nick)) {
@@ -52,6 +60,7 @@ io.on('connection', function(socket) {
     });
     socket.on('disconnect', function() {
         console.log('user disconnected');
+        socket.broadcast.emit('part', socket.nick);
     });
 });
 
