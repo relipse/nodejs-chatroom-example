@@ -18,7 +18,7 @@ function getRandomNick() {
 
 function checkNick(nick) {
     for (var i = 0; i < sockets.length; ++i) {
-        if (sockets.nick.toLowerCase() == nick.toLowerCase()) {
+        if (sockets[i].nick && sockets[i].nick.toLowerCase() == nick.toLowerCase()) {
             return false;
         }
     }
