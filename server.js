@@ -21,6 +21,7 @@ function getRandomNick() {
 }
 
 function checkNick(nick) {
+    if (!nick){ return false; }
     for (var i = 0; i < sockets.length; ++i) {
         if (sockets[i].nick && sockets[i].nick.toLowerCase() == nick.toLowerCase()) {
             return false;
@@ -51,17 +52,30 @@ io.on('connection', function(socket) {
 
     sockets.push(socket);
     socket.on('nick change', function(nick) {
+        if (!nick || nick.length < 3){
+        	socket.emit('nick change rejected', 'TOO_SHORT');
+        	return;
+        }
+
+        if (/[^\da-z]/img.test(subject)) {
+			// Successful match
+			socket.emit('nick change rejected', 'INVALID_CHARS');
+			return;
+		}
+
         if (checkNick(nick)) {
             socket.nick = nick;
             socket.emit('nick change accepted', nick);
         } else {
-            socket.emit('nick change rejected', nick);
+            socket.emit('nick change rejected', 'TAKEN');
         }
     });
+
     socket.on('chat message', function(msg) {
         console.log('message: ' + socket.nick + ': ' + msg);
         io.emit('chat message', {from: socket.nick, msg: msg});
     });
+    
     socket.on('disconnect', function() {
         console.log(socket.nick + ' disconnected');
         removeSocket(socket);
