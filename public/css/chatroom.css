@@ -16,3 +16,10 @@
    width: 100%;
 }
 
+.messages li.italic {
+   font-style: italic;
+}
+
+.messages li.bold {
+	font-weight: bold;
+}

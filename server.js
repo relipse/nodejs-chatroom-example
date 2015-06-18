@@ -57,7 +57,7 @@ io.on('connection', function(socket) {
         	return;
         }
 
-        if (/[^\da-z]/img.test(subject)) {
+        if (/[^\da-z]/img.test(nick)) {
 			// Successful match
 			socket.emit('nick change rejected', 'INVALID_CHARS');
 			return;
@@ -75,7 +75,7 @@ io.on('connection', function(socket) {
         console.log('message: ' + socket.nick + ': ' + msg);
         io.emit('chat message', {from: socket.nick, msg: msg});
     });
-    
+
     socket.on('disconnect', function() {
         console.log(socket.nick + ' disconnected');
         removeSocket(socket);

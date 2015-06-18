@@ -1,5 +1,6 @@
-var appendMessage = function(msg) {
-    $('.messages ul').append($('<li>').text(msg));
+var appendMessage = function(msg, format) {
+    format = format || {class:''};
+    $('.messages ul').append($('<li class="'+format.class+'">').text(msg));
 };
 
 var socket = io();
@@ -22,16 +23,16 @@ $('.chatbox form').submit(function() {
 
 socket.on('nick given', function(nick) {
     $('.memberList .me').html(nick);
-    appendMessage('You are now known as ' + nick + ', to change your nick type /nick <new-nick>');
+    appendMessage('You are now known as ' + nick + ', to change your nick type /nick <new-nick>', 'italic');
 });
 
 socket.on('nick change accepted', function(nick) {
     $('.memberList .me').html(nick);
-    appendMessage('You are now known as ' + nick);
+    appendMessage('You are now known as ' + nick, 'italic');
 });
 
-socket.on('nick change rejected', function(nick) {
-    appendMessage('Nick is already taken: ' + nick);
+socket.on('nick change rejected', function(reason) {
+    appendMessage('Nick change rejected: ' + reason, 'italic');
 });
 
 socket.on('chat message', function(obj) {
@@ -39,15 +40,17 @@ socket.on('chat message', function(obj) {
 });
 
 socket.on('server full', function(msg) {
-    appendMessage('Server full, try again later');
+    appendMessage('Server full, try again later', 'italic');
 })
 
 socket.on('join', function(nick){
     $('.memberList').append('<li class="'+nick+'">'+nick+'</li>');
+    appendMessage(nick+' has joined', 'italic');
 });
 
 socket.on('part', function(nick){
     $('.memberlist .'+nick).remove();
+    appendMessage(nick+' has left', 'italic');
 });
 
 socket.on('nicklist', function(nicklist){
