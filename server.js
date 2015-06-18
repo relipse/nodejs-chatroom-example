@@ -22,14 +22,18 @@ function checkNick(nick) {
             return false;
         }
     }
-    return false;
+    return true;
 }
 
 io.on('connection', function(socket) {
     console.log('a user connected');
     var nick = getRandomNick();
+    var counter = 0;
     while (checkNick(nick) == false) {
         nick = getRandomNick();
+        if (++counter >= 5){
+        	socket.emit('server full', 'full');
+        }
     }
     socket.nick = nick;
     socket.emit('nick given', nick);

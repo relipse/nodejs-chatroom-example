@@ -59,6 +59,10 @@ socket.on('nick change rejected', function(nick){
  socket.on('chat message', function(msg){
     appendMessage(msg);
   });
+
+socket.on('server full', function(msg){
+  appendMessage('Server full, try again later');
+})
 </script>
 </body>
 </html>
