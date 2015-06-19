@@ -51,12 +51,16 @@ socket.on('server full', function(msg) {
 
 socket.on('join', function(nick){
     $('.memberList').append('<li class="'+nick+'">'+nick+'</li>');
-    appendMessage(nick+' has joined', 'italic');
+    appendMessage(nick+' has joined', {class:'italic'});
 });
 
 socket.on('part', function(nick){
     $('.memberlist .'+nick).remove();
-    appendMessage(nick+' has left', 'italic');
+    appendMessage(nick+' has left', {class:'italic'});
+});
+
+socket.on('disconnect', function(){
+    appendMessage('Disconnected.', {class:'italic'});
 });
 
 socket.on('nicklist', function(nicklist){
