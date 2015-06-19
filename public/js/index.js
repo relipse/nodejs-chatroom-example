@@ -1,6 +1,7 @@
 var appendMessage = function(msg, format) {
     format = format || {'class':''};
-    $('.messages ul').append($('<li class="'+format.class+'">').text(msg));
+    $('.messages ul').append($('<li class="'+format.class+'">').text(msg))
+                     .scrollTop($('.messages ul')[0].scrollHeight);
 };
 
 var socket = io();

@@ -13,8 +13,8 @@ body {
 
 .members ul{
   list-style: none;
-
 }
+
 .members li {
    border-bottom: 1px solid gray;
 }
@@ -31,6 +31,8 @@ body {
   list-style: none;
   padding-left: 10px;
   margin-top: 5px;
+  height: 500px;
+  overflow-y: auto;
 }
 
 .chatbox input {
@@ -39,6 +41,7 @@ body {
 
 .messages li.italic, .messages li.italics, .messages li.system {
    font-style: italic;
+   color: gray;
 }
 
 .messages li.bold {
