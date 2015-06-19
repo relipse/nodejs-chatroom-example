@@ -19,6 +19,10 @@ body {
    border-bottom: 1px solid gray;
 }
 
+.members li.me {
+   font-weight: bold;
+}
+
 .messages {
   width: 79%;
   height: 500px;
