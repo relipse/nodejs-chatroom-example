@@ -33,7 +33,7 @@ function checkNick(nick) {
 }
 
 io.on('connection', function(socket) {
-    console.log('a user connected');
+    console.log(socket.handshake.address + ' connecting...');
     var nick = getRandomNick();
     var counter = 0;
     while (checkNick(nick) == false) {
@@ -43,6 +43,7 @@ io.on('connection', function(socket) {
         }
     }
     socket.nick = nick;
+    console.log('Connected -> ' + socket.handshake.address + ' ' + socket.nick);
     socket.emit('nick given', nick);
     //tell everyone that I joined
     socket.broadcast.emit('join', nick);
@@ -56,10 +57,11 @@ io.on('connection', function(socket) {
 
 
     client.lrange('chatmessages', 0, -1, function(err, messages){
-	messages = messages.reverse();
-	messages.forEach(function(message){
-		socket.emit('chat message',{from: message.from, msg: message.msg});
-	});
+		messages = messages.reverse();
+		messages.forEach(function(message){
+			var obj = JSON.parse(message);
+			socket.emit('chat message',{from: obj.from, msg: obj.msg});
+		});
     });
 
     socket.on('nick change', function(nick) {
