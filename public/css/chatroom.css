@@ -13,8 +13,7 @@ body {
 
 .members ul{
   list-style: none;
-  padding-left: 10px;
-  margin-top: 5px;
+
 }
 .members li {
    border-bottom: 1px solid gray;
@@ -30,6 +29,8 @@ body {
 
 .messages ul{
   list-style: none;
+  padding-left: 10px;
+  margin-top: 5px;
 }
 
 .chatbox input {
