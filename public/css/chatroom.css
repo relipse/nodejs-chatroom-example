@@ -37,7 +37,7 @@ body {
    width: 100%;
 }
 
-.messages li.italic {
+.messages li.italic, .messages li.italics, .messages li.system {
    font-style: italic;
 }
 
