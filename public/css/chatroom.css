@@ -1,9 +1,14 @@
+body {
+	font-family: Gill Sans,Gill Sans MT,Calibri,sans-serif;
+}
+
 .members {
   float: left;
   width: 20%;
   height: 500px;
   background-color: silver;
   border: 1px solid gray;
+  font-size: .7em;
 }
 
 .members ul{
