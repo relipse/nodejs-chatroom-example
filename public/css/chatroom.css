@@ -3,13 +3,26 @@
   width: 20%;
   height: 500px;
   background-color: silver;
+  border: 1px solid gray;
+}
+
+.members ul{
+  list-style: none;
+}
+.members li {
+   border-bottom: 1px solid gray;
 }
 
 .messages {
   width: 80%;
   height: 500px;
   float: left;
-  background-color: silver;
+  background-color: #FFFFFF;
+  border: 1px solid gray;
+}
+
+.messages ul{
+  list-style: none;
 }
 
 .chatbox input {
