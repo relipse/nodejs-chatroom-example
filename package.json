@@ -12,6 +12,7 @@
   "license": "MiT",
   "dependencies": {
     "express": "~4.10.2",
-    "socket.io": "~1.3.5"
+    "socket.io": "~1.3.5",
+    "redis": "~0.12.1"
   }
 }

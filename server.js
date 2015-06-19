@@ -3,6 +3,8 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var sockets = [];
+var redis = require('redis');
+var client = redis.createClient();
 
 function removeSocket(socket){
 	sockets.splice(sockets.indexOf(socket), 1);
@@ -51,6 +53,15 @@ io.on('connection', function(socket) {
     socket.emit('nicklist', othernicks);
 
     sockets.push(socket);
+
+
+    client.lrange('chatmessages', 0, -1, function(err, messages){
+	messages = messages.reverse();
+	messages.forEach(function(message){
+		socket.emit('chat message',{from: message.from, msg: message.msg});
+	});
+    });
+
     socket.on('nick change', function(nick) {
         if (!nick || nick.length < 3){
         	socket.emit('nick change rejected', 'TOO_SHORT');
@@ -75,6 +86,10 @@ io.on('connection', function(socket) {
 
     socket.on('chat message', function(msg) {
         console.log('message: ' + socket.nick + ': ' + msg);
+   	client.lpush('chatmessages', JSON.stringify({from: socket.nick, msg: msg}), function(err, reply){
+		client.ltrim('chatmessages', 0, 9);
+	});
+
         io.emit('chat message', {from: socket.nick, msg: msg});
     });
 
