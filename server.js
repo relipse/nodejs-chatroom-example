@@ -64,8 +64,10 @@ io.on('connection', function(socket) {
 		}
 
         if (checkNick(nick)) {
+        	var oldnick = socket.nick;
             socket.nick = nick;
             socket.emit('nick change accepted', nick);
+            socket.broadcast.emit('nick change user', {old: oldnick, "new": nick});
         } else {
             socket.emit('nick change rejected', 'TAKEN');
         }

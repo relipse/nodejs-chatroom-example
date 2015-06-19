@@ -35,6 +35,11 @@ socket.on('nick change rejected', function(reason) {
     appendMessage('Nick change rejected: ' + reason, 'italic');
 });
 
+socket.on('nick change user', function(nickobj){
+  $('.memberList .'+ nickobj.old).removeClass(nickobj.old).addClass(nickobj.new).html(nickobj.new);
+  appendMessage(nickobj.old + ' is now known as ' + nickobj.new, 'italic');
+});
+
 socket.on('chat message', function(obj) {
     appendMessage(obj.from + ': ' + obj.msg);
 });
