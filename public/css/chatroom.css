@@ -8,7 +8,7 @@ body {
   height: 500px;
   background-color: silver;
   border: 1px solid gray;
-  font-size: .7em;
+  font-size: .9em;
 }
 
 .members ul{
@@ -19,7 +19,7 @@ body {
 }
 
 .messages {
-  width: 80%;
+  width: 79%;
   height: 500px;
   float: left;
   background-color: #FFFFFF;
