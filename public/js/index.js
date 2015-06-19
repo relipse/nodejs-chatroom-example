@@ -60,6 +60,8 @@ socket.on('part', function(nick){
 });
 
 socket.on('disconnect', function(){
+    $('.memberList').html('');
+    $('.memberList').append('<li class="me"></li>');
     appendMessage('Disconnected.', {class:'italic'});
 });
 
