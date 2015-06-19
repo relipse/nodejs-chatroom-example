@@ -57,14 +57,14 @@ socket.on('join', function(nick){
 });
 
 socket.on('part', function(nick){
-    $('.memberlist .'+nick).remove();
+    $('.memberList li.'+nick).remove();
     appendMessage(nick+' has left', {class:'italic'});
 });
 
 socket.on('disconnect', function(){
     $('.memberList').html('');
     $('.memberList').append('<li class="me"></li>');
-    appendMessage('Disconnected.', {class:'italic'});
+    appendMessage('Disconnected. Attempting to reconnect...', {class:'italic'});
 });
 
 socket.on('nicklist', function(nicklist){
