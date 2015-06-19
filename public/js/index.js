@@ -23,7 +23,9 @@ $('.chatbox form').submit(function() {
 });
 
 socket.on('nick given', function(nick) {
-    $('.memberList .me').html(nick);
+    $('.memberList').html('');
+    $('.memberList').append('<li class="me">'+nick+'</li>');
+
     appendMessage('You are now known as ' + nick + ', to change your nick type /nick <new-nick>', {class:'italic'});
 });
 
