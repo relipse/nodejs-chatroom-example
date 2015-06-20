@@ -3,9 +3,6 @@ body {
 }
 
 .members {
-  float: left;
-  width: 20%;
-  height: 500px;
   background-color: silver;
   border: 1px solid gray;
   font-size: .9em;
@@ -24,9 +21,6 @@ body {
 }
 
 .messages {
-  width: 79%;
-  height: 500px;
-  float: left;
   background-color: #FFFFFF;
   border: 1px solid gray;
 }

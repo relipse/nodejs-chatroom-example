@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <link rel="stylesheet" href="css/chatroom.css" type="text/css" media="screen, projection" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-<div class="members">
-<ul class="memberList">
-<li class="me"></li>
-</ul>
-</div>
-<div class="messages">
-<ul>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-xs-2">
+			<div class="members">
+				<ul class="memberList">
+					<li class="me"></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-xs-10">
+			<div class="messages">
+				<ul>
 
-</ul>
-<div class="chatbox">
-<form>
-<input type="text" autocomplete="off" />
-</form>
-</div>
+				</ul>
+				<div class="chatbox">
+					<form>
+						<input type="text" autocomplete="off" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 
 <footer>
@@ -26,6 +40,9 @@ This example's source code can be found at <a target="_blank" href="https://gith
 </footer>
 
 <script src="js/jquery-2.1.4.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 <script src="js/ChatCommandProcessor.js"></script>
 <script src="js/index.js"></script>
 </body>
