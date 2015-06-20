@@ -53,7 +53,19 @@ body {
     margin: 0;
     padding: 0;
   } 
-  
-  .members ul li { display: inline; }
+
+  .members ul li { 
+    display: inline; 
+    padding-right: 5px; 
+  }
+
+  .members ul li:after {
+    content: ", ";
+    color: #aaa;
+  }
+     
+  .members ul li:last-child:after {
+    content: "";
+  }
 
 }
