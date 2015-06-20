@@ -1,6 +1,12 @@
 var appendMessage = function(msg, format) {
-    format = format || {'class':''};
-    $('.messages ul').append($('<li class="'+format.class+'">').text(msg))
+    format = format || {'class':'', html: false};
+    var $li = $('<li class="'+format.class+'">');
+    if (format.html){
+        $li.html(msg);
+    }else{
+        $li.text(msg);
+    }
+    $('.messages ul').append($li)
                      .scrollTop($('.messages ul')[0].scrollHeight);
 };
 
@@ -74,4 +80,4 @@ socket.on('nicklist', function(nicklist){
     }
 });
 
-appendMessage("Welcome to relipse chat room example. This example's source code can be found at <a target=\"_blank\" href=\"https://github.com/relipse/nodejs-chatroom-example\">github.com/relipse/nodejs-chatroom-example</a>", {class:'bold'});
+appendMessage("Welcome to relipse chat room example. This example's source code can be found at <a target=\"_blank\" href=\"https://github.com/relipse/nodejs-chatroom-example\">github.com/relipse/nodejs-chatroom-example</a>", {class:'bold', html: true});
