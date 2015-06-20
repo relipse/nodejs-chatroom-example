@@ -73,3 +73,5 @@ socket.on('nicklist', function(nicklist){
         $('.memberList').append('<li class="'+nick+'">'+nick+'</li>');
     }
 });
+
+appendMessage("Welcome to relipse chat room example. This example's source code can be found at <a target=\"_blank\" href=\"https://github.com/relipse/nodejs-chatroom-example\">github.com/relipse/nodejs-chatroom-example</a>", {class:'bold'});
