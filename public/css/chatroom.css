@@ -46,8 +46,8 @@ body {
 	font-weight: bold;
 }
 
-/*PHONE*/
-@media (max-width: 768px) {
+/*PHONE / TABLETS */
+@media (max-width: 991px) {
 
   .members ul{
     margin: 0;
