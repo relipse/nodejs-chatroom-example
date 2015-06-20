@@ -45,9 +45,3 @@ body {
 .messages li.bold {
 	font-weight: bold;
 }
-
-
-footer {
-  bottom: 10px;
-  position: absolute;
-}
