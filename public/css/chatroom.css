@@ -32,6 +32,7 @@ body {
 .messages {
   background-color: #FFFFFF;
   border: 1px solid gray;
+  height: 100%;
 }
 
 .messages ul{
@@ -76,7 +77,7 @@ body {
     content: "";
   }
 
-  .expandHeight {
+  .membersContainer.expandHeight {
     height: auto;
   }
 }
