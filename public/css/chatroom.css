@@ -45,3 +45,15 @@ body {
 .messages li.bold {
 	font-weight: bold;
 }
+
+/*PHONE*/
+@media (max-width: 768px) {
+
+  .members ul{
+    margin: 0;
+    padding: 0;
+  } 
+  
+  .members ul li { display: inline; }
+
+}
