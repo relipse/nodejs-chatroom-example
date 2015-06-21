@@ -86,3 +86,10 @@ body {
     height: auto;
   }
 }
+
+/* DESKTOPS */
+@media (min-width: 992px) {
+  /* Medium devices (desktops, 992px and up) */
+  .mainChat div[class^="col"]{padding-left:0; padding-right:0;}
+
+}
